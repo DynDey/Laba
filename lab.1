@@ -1,0 +1,11 @@
+str1 =input()
+str2 = str1.split()
+for i in range(len(str2)):
+    str2[i] = str2[i].replace(',', '')
+    str2[i] = str2[i].replace('.', '')
+    str2[i] = str2[i].replace('-', '')
+str1 = ''
+for elem in str2:
+    if len(elem) >= 5 and len(elem)<=10:
+        str1 += elem + ' '
+print(str1)
