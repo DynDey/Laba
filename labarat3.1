@@ -1,7 +1,54 @@
-c=[]
-file = open('text.txt','rt')
-for i in file:
-    c.append(i[:-1])
-print(c)
-с=';'.join(c)
-print(с)
+import os
+import sys
+def fun1():
+    nums=[]
+    k=0
+    file=open('text.txt','r')
+    for i in file:      #выведение содержания файла в виде списка
+        nums.append(i[:-1])
+    for i in nums:      #создание подсписков в списке где первый товар разбивается на "характеристики"
+        nums[k]=i.split(';')
+        k+=1
+    nums=sorted(nums,key=lambda a: a[1])         #сортировка
+
+    for i in nums:
+        print('%s%10s%10s%10s' % (i[0], i[1], i[2],i[3]))      #перевод вида список в вид строки
+    file.close()
+
+#########
+def fun2():
+    nums = []
+    k = 0
+    file = open('text.txt', 'r')
+    zero=nums
+    for i in file:
+        nums.append(i[:-1])
+    for i in nums:
+        nums[k] = i.split(';')
+        k+=1
+
+    for i in nums:
+        print('%10s%10s%10s%10s'%(i[0], i[1], i[2], i[3]))
+        ##
+    print(zero)
+    print('Введите номер строки')
+    n=input()
+    print('Введите количество товара которое хотите изменить')
+    prise=input()
+    for i in nums:
+        if i[0]==n:
+            i[3]=int(i[3])+int(prise)
+
+    for i in nums:
+        print('%10s%10s%10s%10s' % (i[0], i[1], i[2], i[3]))
+    file.close()
+        #############
+    save=input("Сохранить изменения?(y\\n)")
+    if save=='y':
+        file = open('text.txt', 'w')
+        file.write(str(zero)+'\n')
+        #for i in zero:
+
+        print('Записано')
+fun2()
+
