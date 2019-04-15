@@ -1,6 +1,6 @@
 import os
 import sys
-def fun1():
+def fun2():
     nums=[]
     k=0
     file=open('text.txt','r')
@@ -14,9 +14,10 @@ def fun1():
     for i in nums:
         print('%s%10s%10s%10s' % (i[0], i[1], i[2],i[3]))      #перевод вида список в вид строки
     file.close()
+    exit()
 
-#########
-def fun2():
+
+def fun3():
     nums = []
     k = 0
     file = open('text.txt', 'r')
@@ -35,6 +36,7 @@ def fun2():
     n=input()
     print('Введите количество товара которое хотите изменить')
     prise=input()
+
     for i in nums:
         if i[0]==n:
             i[3]=int(i[3])+int(prise)
@@ -42,13 +44,37 @@ def fun2():
     for i in nums:
         print('%10s%10s%10s%10s' % (i[0], i[1], i[2], i[3]))
     file.close()
-        #############
+
     save=input("Сохранить изменения?(y\\n)")
     if save=='y':
         file = open('text.txt', 'w')
+        #for i in nums:
         file.write(str(zero)+'\n')
-        #for i in zero:
-
         print('Записано')
-fun2()
+    print(file.read())
+    exit()
 
+def fun1():
+    di = input('Введите адрес директории: ')
+    print('Файлов в директории:',len([name for name in os.listdir(di) if os.path.isfile(os.path.join(di, name))]))
+    exit()
+
+def exit():
+    m = input('Вы хотите продолжить? (y/n)')
+    if m == 'y':
+        menu()
+    else:
+        sys.exit()
+
+def menu():
+    print('0 - Выход\n1 - Посчитать файлы в директории\n2 - Вывод информации о товарах, сортированных по значению\n3 - Изменение количества товаров указанных номеров')
+    m=input()
+    if m=='0':
+        sys.exit()
+    if m=='1':
+        fun1()
+    if m=='2':
+        fun2()
+    if m=='3':
+        fun3()
+menu()
