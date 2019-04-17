@@ -41,19 +41,30 @@ def fun3():
             for i in nums:
                 if i[0]==n:
                     i[3]=int(i[3])+int(prise)
+            nums = sorted(nums, key=lambda a: a[1])
             for i in nums:
                 print('%10s%10s%10s%10s' % (i[0], i[1], i[2], i[3]))
             file.close()
         else:
             break
+    print("Сохранить изменения?(y/n)")
+    an=input()
+    if an=='y':
+        print("Хотите сохранить изменения в новом файле?(y/n)")
+        save=input()
+        if save=='n':
+            file = open('text.txt', 'w')
+            for i in nums:
+                file.write(str(i[0])+';'+str(i[1])+';'+str(i[2])+';'+str(i[3])+'\n')
+            print('Записано')
+        file.close()
+        if save=='y':
+            zerofile=open('newtext.txt','w')
+            for i in nums:
+                zerofile.write(str(i[0]) + ';' + str(i[1]) + ';' + str(i[2]) + ';' + str(i[3]) + '\n')
+            print('Записано')
+            zerofile.close()
 
-    save=input("Сохранить изменения?(y\\n)")
-    if save=='y':
-        file = open('text.txt', 'w')
-        for i in nums:
-            file.write(str(i[0])+';'+str(i[1])+';'+str(i[2])+';'+str(i[3])+'\n')
-        print('Записано')
-    file.close()
     exit()
 
 def fun1():
