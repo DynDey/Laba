@@ -30,28 +30,30 @@ def fun3():
 
     for i in nums:
         print('%10s%10s%10s%10s'%(i[0], i[1], i[2], i[3]))
-        ##
-    print(zero)
-    print('Введите номер строки')
-    n=input()
-    print('Введите количество товара которое хотите изменить')
-    prise=input()
-
-    for i in nums:
-        if i[0]==n:
-            i[3]=int(i[3])+int(prise)
-
-    for i in nums:
-        print('%10s%10s%10s%10s' % (i[0], i[1], i[2], i[3]))
-    file.close()
+    while True:
+        print('Хотите изменить количество товара?(y/n)')
+        ans=input()
+        if ans=='y':
+            print('Введите номер строки')
+            n=input()
+            print('Введите количество товара которое хотите изменить')
+            prise=input()
+            for i in nums:
+                if i[0]==n:
+                    i[3]=int(i[3])+int(prise)
+            for i in nums:
+                print('%10s%10s%10s%10s' % (i[0], i[1], i[2], i[3]))
+            file.close()
+        else:
+            break
 
     save=input("Сохранить изменения?(y\\n)")
     if save=='y':
         file = open('text.txt', 'w')
-        #for i in nums:
-        file.write(str(zero)+'\n')
+        for i in nums:
+            file.write(str(i[0])+';'+str(i[1])+';'+str(i[2])+';'+str(i[3])+'\n')
         print('Записано')
-    print(file.read())
+    file.close()
     exit()
 
 def fun1():
