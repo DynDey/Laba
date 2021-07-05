@@ -1,0 +1,20 @@
+print("Введите число N которое больше десяти")
+b = int(input('N= '))
+if b>10:
+
+    my_list = []
+    for i in range(b):
+        a=int(input(('Введите элемент списка>')))
+        my_list.append(a)
+
+    print('В списке {} элементов'.format(len(my_list)))
+    for i in range(5):
+        my_list.pop(3)
+
+
+    for i in range(2):
+        n = input("Введите число для добавления в конец списка: ")
+        my_list.append(int(n))
+    print(my_list)
+else:
+    print("Вы ввели число меньше 10,попробуйте снова")
